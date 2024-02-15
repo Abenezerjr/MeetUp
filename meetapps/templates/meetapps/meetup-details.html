@@ -1,0 +1,45 @@
+{% extends 'meetapps/base/base.html' %}
+{% load static %}
+
+{% block title %}{{ meetup.title}}{% endblock %}
+{% block css %}
+      <link rel="stylesheet" href="{% static 'meetapps/styles/meetup-detail.css' %}">
+{% endblock %}
+{% block main_header %}
+{{ meetup.title }}
+{% endblock %}
+
+{% block content %}
+    {% if meetup_found %}
+    <article>
+        <img id='main-image' src="{{ meetup.image.url }}" alt="image" >
+        <section id="location">
+            <h2>{{ meetup.location.address  }}</h2>
+        <address> this meetup takes place in <span>{{ meetup.location.name }}</span>{{ meetup.location.address }}.</address>
+</section>
+        <section id="details">
+            <h2>What this meetup About?</h2>
+            <p>{{ meetup.description }}</p>
+            <footer>
+                <p>need more details? Please Contact <a href="mailto:{{ meetup.organizer_email }}"> contact the organizer</a>(pleases don't span us .😁)</p>
+            </footer>
+
+        </section>
+        <section id="registration">
+            <h2>Join us</h2>
+            <form action="{% url 'details' meetup.slug %}" method="POST">
+                {% csrf_token %}
+                <ul>
+                {{ form.as_ul }}
+                 </ul>
+
+            <div id="registration-actions">
+                <button type="submit">Register</button>
+            </div>
+                  </form>
+        </section>
+    </article>
+    {% else %}
+    <h1 class="title">Meetup note found</h1>
+    {% endif %}
+{% endblock %}

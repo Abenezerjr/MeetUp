@@ -1,0 +1,23 @@
+{% extends 'meetapps/base/base.html' %}
+
+{% load static %}
+
+{% block  title%} Your registration successfully!{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'meetapps/styles/confirmation.css' %}">
+{% endblock %}
+
+{% block main_header %} Thanks for singing up!{% endblock %}
+
+{% block content %}
+<section id="confirmation">
+<h2>Your registration successfully!</h2>
+<p>Thanks for signing up - see you at meetup!</p>
+<p>Got questions or can't make it? please <a href="mailto:{{ meetup }}">contact the organizer </a>ahead of  time</p>
+</section>
+    <section>
+    <p>Of course you can sing up for more than one meeting</p>
+        <p><a href="#" class="btn">Explore our meetup</a></p>
+    </section>
+
+{% endblock %}

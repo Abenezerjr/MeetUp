@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+            My Meetups
+    {% endblock %}
+    </title>
+    <link rel="stylesheet" href="{% static 'meetapps/styles/base.css' %}">
+{% block css %}
+
+{% endblock css %}
+</head>
+<body>
+<header id="main-header">
+    <nav><a href="{% url 'meetup' %}" id="main-logo">MeetUps</a></nav>
+    <h1>{% block main_header %}{% endblock %}</h1>
+{% block header_content %}
+
+{% endblock %}
+</header>
+<main>
+{% block content %}
+
+{% endblock content %}
+</main>
+</body>
+</html>
